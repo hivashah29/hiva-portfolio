@@ -448,10 +448,7 @@ export default function ZenlyProject() {
       <div className="zp-page">
 
         {/* ── NAV ── */}
-        <nav className="zp-nav">
-          <div className="zp-nav-logo">MM.EXE</div>
-          <Link to="/" className="zp-back-btn">◀ BACK TO PORTFOLIO</Link>
-        </nav>
+        
 
         <Ticker />
 
@@ -610,7 +607,7 @@ export default function ZenlyProject() {
             <h2 className="zp-section-title">BROCHURE — 6 PANELS</h2>
           </div>
           <p style={{ fontFamily:"var(--mono)", fontSize:20, color:"var(--text-dark)", marginBottom:24, lineHeight:1.6 }}>
-            Click any panel to expand. The brochure covers the full brand story — from front cover to QR-linked digital storefront.
+            CLICK ANY PANEL TO VIEW THE FULL .
           </p>
 
           <div className="zp-brochure-grid">
@@ -683,10 +680,15 @@ export default function ZenlyProject() {
 
         {/* ── FOOTER ── */}
         <footer className="zp-footer">
-          <div style={{ marginBottom:8 }}>★ ★ ★ &nbsp; MISSION 01 COMPLETE &nbsp; ★ ★ ★</div>
-          <div>HIVA SHAH · UI/UX DESIGNER · 2026</div>
-          <div style={{ marginTop:8, fontSize:6, opacity:.4 }}>ZENLY STREETWEAR — FIND YOUR FLOW · RULE THE STREETS</div>
-        </footer>
+  <div style={{ marginBottom:8 }}>★ ★ ★ &nbsp; MISSION 01 COMPLETE &nbsp; ★ ★ ★</div>
+  <div>HIVA SHAH · UI/UX DESIGNER · 2026</div>
+  <div style={{ marginTop:8, fontSize:6, opacity:.4 }}>ZENLY STREETWEAR — FIND YOUR FLOW · RULE THE STREETS</div>
+  <div style={{ marginTop:-155 }}>
+    <Link to="/" className="zp-back-btn" style={{ display:"inline-flex", margin:"0 auto" }}>
+      ◀ BACK TO PORTFOLIO
+    </Link>
+  </div>
+</footer>
 
       </div>
 

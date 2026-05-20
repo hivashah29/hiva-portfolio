@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+let hasStarted = false;
 
 const FONT_LINK = `
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=DM+Sans:wght@300;400;500&display=swap');
@@ -297,11 +298,12 @@ export default function Portfolio() {
   const [lightbox, setLightbox] = useState(null);
   const [toast, setToast]       = useState("");
   const [formData, setFormData] = useState({name:"",email:"",message:""});
-  const [started, setStarted]   = useState(false);
+ const [started, setStarted] = useState(hasStarted);
 
   const showToast = (msg) => { setToast(msg); setTimeout(()=>setToast(""),3500); };
 
   const handleStart = () => {
+    hasStarted = true;
     setStarted(true);
     setTimeout(() => {
       const el = document.getElementById("about");
@@ -322,15 +324,18 @@ export default function Portfolio() {
   return (
     <>
       <style>{CSS}</style>
+      <style>{`body { overflow-y: ${started ? 'auto' : 'hidden'}; }`}</style>
       <Stars/>
 
       <nav style={{top: started ? 0 : 26}}>
         <div className="nav-logo">HS.EXE</div>
-        <ul className="nav-links">
-          {["#about","#projects","#contact"].map(href=>(
-            <li key={href}><a href={href}>{href.replace("#","").toUpperCase()}</a></li>
-          ))}
-        </ul>
+        {started && (
+          <ul className="nav-links">
+            {["#about","#projects","#contact"].map(href=>(
+              <li key={href}><a href={href}>{href.replace("#","").toUpperCase()}</a></li>
+            ))}
+          </ul>
+        )}
         <div className="hp-bar">
           <span className="hp-label">HP</span>
           <div className="hp-track"><div className="hp-fill"/></div>
@@ -608,16 +613,25 @@ export default function Portfolio() {
                     <div className="win-dots"><div className="win-dot" style={{background:"#ff6b6b"}}/><div className="win-dot" style={{background:"#ffd93d"}}/><div className="win-dot" style={{background:"#6bcb77"}}/></div>
                     SEND A MESSAGE
                   </div>
-                  <div className="contact-form">
-                    <div><label className="form-label">YOUR NAME</label><input className="form-input" placeholder="Your Name..." value={formData.name} onChange={e=>setFormData({...formData,name:e.target.value})}/></div>
-                    <div><label className="form-label">EMAIL</label><input className="form-input" placeholder="your@email.com" value={formData.email} onChange={e=>setFormData({...formData,email:e.target.value})}/></div>
-                    <div><label className="form-label">MESSAGE</label><textarea className="form-input form-textarea" placeholder="Type your quest here..." value={formData.message} onChange={e=>setFormData({...formData,message:e.target.value})}/></div>
-                    <button className="send-btn" onClick={handleSend}>▶ SEND MESSAGE</button>
-                  </div>
+                 <form action="https://formspree.io/f/xyzabc123" method="POST" className="contact-form" onSubmit={(e) => { e.preventDefault(); fetch('https://formspree.io/f/xqejqewj', { method:'POST', body: new FormData(e.target), headers:{'Accept':'application/json'} }).then(()=>{ e.target.reset(); showToast("✉ MESSAGE SENT! +50 XP"); }).catch(()=>showToast("⚠ FAILED TO SEND!")); }}>
+  <div>
+    <label className="form-label">YOUR NAME</label>
+    <input className="form-input" placeholder="Your Name..." name="name" required/>
+  </div>
+  <div>
+    <label className="form-label">EMAIL</label>
+    <input className="form-input" placeholder="your@email.com" name="email" type="email" required/>
+  </div>
+  <div>
+    <label className="form-label">MESSAGE</label>
+    <textarea className="form-input form-textarea" placeholder="Type your quest here..." name="message" required/>
+  </div>
+  <button type="submit" className="send-btn">▶ SEND MESSAGE</button>
+</form>
                 </div>
                 <Window title="FIND ME HERE" color="var(--peach)" style={{border:"2px solid var(--tan)"}}>
                   <div className="social-links">
-                    {[{icon:"✉",label:"Email",href:"mailto:hivashah2021@gmail.com"},{icon:"🔗",label:"LinkedIn",href:"https://github.com/hivashah29"},{icon:"👨🏻‍💻",label:"Github",href:"#"}].map(s=>(
+                    {[{icon:"✉",label:"Email",href:"mailto:hivashah2021@gmail.com"},{icon:"🔗",label:"LinkedIn",href:"https://linkedin.com/in/hiva-shah-47417840"},{icon:"👨🏻‍💻",label:"Github",href:"https://github.com/hivashah29"}].map(s=>(
                       <a key={s.label} href={s.href} className="social-link"><span className="social-icon">{s.icon}</span>{s.label}</a>
                     ))}
                   </div>
