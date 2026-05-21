@@ -73,7 +73,7 @@ const CSS = `
   .pixel-cloud { font-family:var(--mono); font-size:28px; color:var(--mauve); opacity:.8; white-space:nowrap; }
 
   nav {
-    position:fixed; top:0; left:0; right:0; z-index:1000; transition:top 0.1s;
+    position:fixed; top:0; left:0; right:0; z-index:1000; transition:top 0.1s, opacity 0.4s ease;
     display:flex; justify-content:space-between; align-items:center;
     padding:12px 32px; background:rgba(255,254,224,.96); backdrop-filter:blur(8px);
     border-bottom:3px solid var(--rose); box-shadow:0 2px 0 var(--mauve);
@@ -328,19 +328,21 @@ export default function Portfolio() {
       <Stars/>
 
       <nav style={{top: started ? 0 : 26}}>
-        <div className="nav-logo">HS.EXE</div>
-        {started && (
-          <ul className="nav-links">
-            {["#about","#projects","#contact"].map(href=>(
-              <li key={href}><a href={href}>{href.replace("#","").toUpperCase()}</a></li>
-            ))}
-          </ul>
-        )}
-        <div className="hp-bar">
-          <span className="hp-label">HP</span>
-          <div className="hp-track"><div className="hp-fill"/></div>
-        </div>
-      </nav>
+  <div className="nav-logo">HS.EXE</div>
+  {started && (
+    <>
+      <ul className="nav-links">
+        {["#about","#projects","#contact"].map(href=>(
+          <li key={href}><a href={href}>{href.replace("#","").toUpperCase()}</a></li>
+        ))}
+      </ul>
+      <div className="hp-bar" style={{animation:"fade-in 0.6s ease forwards"}}>
+        <span className="hp-label">HP</span>
+        <div className="hp-track"><div className="hp-fill"/></div>
+      </div>
+    </>
+  )}
+</nav>
 
       {!started && (
         <div style={{position:"fixed",top:0,left:0,right:0,zIndex:1200,height:26,background:"#F6B8D0",overflow:"hidden",borderBottom:"2px solid #F1BEB5",display:"flex",alignItems:"center"}}>
