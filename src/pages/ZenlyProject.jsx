@@ -120,7 +120,7 @@ body::before{
 }
 
 /* ── MAIN CONTENT ── */
-.zp-content{max-width:1200px;margin:0 auto;padding:60px 24px 80px;}
+.zp-content{max-width:1200px;margin:0 auto;padding:60px 24px 24px;}
 
 /* ── SECTION HEADER ── */
 .zp-section-head{
@@ -679,16 +679,19 @@ export default function ZenlyProject() {
         </div>
 
         {/* ── FOOTER ── */}
+      {/* ── BACK BUTTON ── */}
+        <div style={{ display:"flex", justifyContent:"center", padding:"16px 0", background:"var(--blond)", marginTop:"-20px" }}>
+          <Link to="/" className="zp-back-btn">
+            ◀ BACK TO PORTFOLIO
+          </Link>
+        </div>
+
+        {/* ── FOOTER ── */}
         <footer className="zp-footer">
-  <div style={{ marginBottom:8 }}>★ ★ ★ &nbsp; MISSION 01 COMPLETE &nbsp; ★ ★ ★</div>
-  <div>HIVA SHAH · UI/UX DESIGNER · 2026</div>
-  <div style={{ marginTop:8, fontSize:6, opacity:.4 }}>ZENLY STREETWEAR — FIND YOUR FLOW · RULE THE STREETS</div>
-  <div style={{ marginTop:-155 }}>
-    <Link to="/" className="zp-back-btn" style={{ display:"inline-flex", margin:"0 auto" }}>
-      ◀ BACK TO PORTFOLIO
-    </Link>
-  </div>
-</footer>
+          <div style={{ marginBottom:8 }}>★ ★ ★ &nbsp; MISSION 01 COMPLETE &nbsp; ★ ★ ★</div>
+          <div>HIVA SHAH · UI/UX DESIGNER · 2026</div>
+          <div style={{ marginTop:8, fontSize:6, opacity:.4 }}>ZENLY STREETWEAR — FIND YOUR FLOW · RULE THE STREETS</div>
+        </footer>
 
       </div>
 
