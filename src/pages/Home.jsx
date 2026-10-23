@@ -633,7 +633,7 @@ export default function Portfolio() {
                 </div>
                 <Window title="FIND ME HERE" color="var(--peach)" style={{border:"2px solid var(--tan)"}}>
                   <div className="social-links">
-                    {[{icon:"✉",label:"Email",href:"mailto:hivashah2021@gmail.com"},{icon:"🔗",label:"LinkedIn",href:"https://linkedin.com/in/hiva-shah-47417840"},{icon:"👨🏻‍💻",label:"Github",href:"https://github.com/hivashah29"}].map(s=>(
+                    {[{icon:"✉",label:"Email",href:"mailto:hivashah2021@gmail.com"},{icon:"🔗",label:"LinkedIn",href:"https://linkedin.com/in/hiva-shah-474178409"},{icon:"👨🏻‍💻",label:"Github",href:"https://github.com/hivashah29"}].map(s=>(
                       <a key={s.label} href={s.href} className="social-link"><span className="social-icon">{s.icon}</span>{s.label}</a>
                     ))}
                   </div>
